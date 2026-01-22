@@ -19,6 +19,7 @@ jobs:
           GITHUB_PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          socket_org: ${{ secrets.SOCKET_ORG }}
           socket_security_api_key: ${{ secrets.SOCKET_SECURITY_API_KEY }}
           webhook_url: ${{ secrets.WEBHOOK_URL }}
           use_custom_sast_rules: true
