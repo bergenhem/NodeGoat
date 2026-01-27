@@ -5,12 +5,12 @@
   "description": "A tool to learn OWASP Top 10 for node.js developers",
   "main": "server.js",
   "dependencies": {
-    "next":"15.5.1"
+    "next": "15.5.1"
   },
   "scripts": {
+    "postinstall": "socket patch apply --silent"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": "https://github.com/OWASP/NodejsGoat",
   "license": "Apache 2.0"
 }
