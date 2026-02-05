@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Run Socket Basics
-        uses: SocketDev/socket-basics@8a548f14c90068deda466c5f45e6090f9baa7824
+        uses: SocketDev/socket-basics@e0b289c0791dd38d4d41793cea73dfa78ba951c1
         env:
           GITHUB_PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
         with:
@@ -22,3 +22,14 @@ jobs:
           socket_org: ${{ secrets.SOCKET_ORG }}
           socket_security_api_key: ${{ secrets.SOCKET_SECURITY_API_KEY }}
           use_custom_sast_rules: true
+          # PR Comment Enhancements (all default to true)
+          pr_comment_links_enabled: 'true'
+          pr_comment_collapse_enabled: 'true'
+          pr_comment_collapse_non_critical: 'true'
+          pr_comment_code_fencing_enabled: 'true'
+          pr_comment_show_rule_names: 'true'
+          pr_labels_enabled: 'true'
+          # Optional: Customize label names
+          # pr_label_critical: 'security: critical'
+          # pr_label_high: 'security: high'
+          # pr_label_medium: 'security: medium'
