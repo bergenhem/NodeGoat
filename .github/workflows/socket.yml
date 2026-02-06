@@ -29,7 +29,7 @@ jobs:
           pr_comment_code_fencing_enabled: 'true'
           pr_comment_show_rule_names: 'true'
           pr_labels_enabled: 'true'
-          # Optional: Customize label names
+          # Optional: Customize PR labels
           # pr_label_critical: 'security: critical'
           # pr_label_high: 'security: high'
           # pr_label_medium: 'security: medium'
