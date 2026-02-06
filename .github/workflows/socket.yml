@@ -22,7 +22,7 @@ jobs:
           socket_org: ${{ secrets.SOCKET_ORG }}
           socket_security_api_key: ${{ secrets.SOCKET_SECURITY_API_KEY }}
           use_custom_sast_rules: true
-          # PR Comment Enhancements (all default to true)
+          # PR Comment Enhancements (default: true)
           pr_comment_links_enabled: 'true'
           pr_comment_collapse_enabled: 'true'
           pr_comment_collapse_non_critical: 'true'
