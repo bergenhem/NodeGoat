@@ -1,35 +1,38 @@
-name: Security Scan
+name: 🛡️ Socket Basics
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   security-scan:
     permissions:
       issues: write
-      contents: read
       pull-requests: write
-    runs-on: ubuntu-latest
+      contents: read
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Run Socket Basics
-        uses: SocketDev/socket-basics@f3a7ae31c5821ccbdad9172d0263ef05d07609b1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: 🛡️ Socket Basics
+        uses: SocketDev/socket-basics@64552eb564b61be7d6c7bbf2959f6208f1e6a945 # for GHA testing
         env:
-          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           socket_org: ${{ secrets.SOCKET_ORG }}
           socket_security_api_key: ${{ secrets.SOCKET_SECURITY_API_KEY }}
           use_custom_sast_rules: true
-          # PR Comment Enhancements (default: true)
-          pr_comment_links_enabled: 'true'
-          pr_comment_collapse_enabled: 'true'
-          pr_comment_collapse_non_critical: 'true'
-          pr_comment_code_fencing_enabled: 'true'
-          pr_comment_show_rule_names: 'true'
-          pr_labels_enabled: 'true'
-          # Optional: Customize PR labels
-          # pr_label_critical: 'security: critical'
-          # pr_label_high: 'security: high'
-          # pr_label_medium: 'security: medium'
+          pr_comment_links_enabled: true
+          pr_comment_collapse_enabled: true
+          pr_comment_collapse_non_critical: true
+          pr_comment_code_fencing_enabled: true
+          pr_comment_show_rule_names: true
+          pr_labels_enabled: true
