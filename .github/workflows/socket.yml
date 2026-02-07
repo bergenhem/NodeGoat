@@ -1,4 +1,4 @@
-name: 🛡️ Socket Basics
+name: ⚡️ Socket Basics
 
 on:
   pull_request:
@@ -20,8 +20,8 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: 🛡️ Socket Basics
+      - uses: actions/checkout@d65ab2a9adbf08a9eeba05b1a36b65fc69869296 # v6.0.2
+      - name: ⚡️ Socket Basics
         uses: SocketDev/socket-basics@9bd48997abe78a02e64336ba4d586a3d75dd25c7 # for GHA testing
         env:
           GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
