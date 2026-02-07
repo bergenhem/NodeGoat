@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: 🛡️ Socket Basics
-        uses: SocketDev/socket-basics@64552eb564b61be7d6c7bbf2959f6208f1e6a945 # for GHA testing
+        uses: SocketDev/socket-basics@9bd48997abe78a02e64336ba4d586a3d75dd25c7 # for GHA testing
         env:
           GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
