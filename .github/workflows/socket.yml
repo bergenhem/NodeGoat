@@ -22,7 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: ⚡️ Socket Basics
-        uses: SocketDev/socket-basics@9dd2e2ab34f0b8a1a5318d34c1cb161f2dc866d0 # for GHA testing
+        uses: SocketDev/socket-basics@1.0.29 # Smoke test of new GHA release
+        # uses: SocketDev/socket-basics@9dd2e2ab34f0b8a1a5318d34c1cb161f2dc866d0 # for GHA testing
         env:
           GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
