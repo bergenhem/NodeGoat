@@ -1,0 +1,60 @@
+name: "Input/Context Flow Demonstrator"
+description: "Demonstrates common dataflow patterns from inputs and workflow context into commands, env, and outputs."
+author: "miki799"
+branding:
+  icon: "alert-triangle"
+  color: "red"
+
+inputs:
+  user_text:
+    description: "Untrusted user-supplied text (for testing dataflow detection)"
+    required: true
+
+outputs:
+  arg_output:
+    description: "Echo of user input (Arg -> Output)"
+    value: ${{ steps.arg_to_output.outputs.arg_output }}
+  ctx_output:
+    description: "Echo of context value (Context -> Output)"
+    value: ${{ steps.ctx_to_output.outputs.ctx_output }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: arg_to_sink
+      shell: bash
+      run: |
+        bash -lc "echo 'ARG_TO_SINK:' '${{ inputs.user_text }}'"
+
+    - id: ctx_to_sink
+      shell: bash
+      run: |
+        bash -lc "echo 'CTX_TO_SINK:' '${{ github.actor }}' '${{ github.ref }}'"
+
+    - id: arg_to_env
+      shell: bash
+      run: |
+        {
+          echo "UNSAFE_ARG_ENV<<EOF"
+          echo "${{ inputs.user_text }}"
+          echo "EOF"
+        } >> "$GITHUB_ENV"
+
+    - id: ctx_to_env
+      shell: bash
+      run: |
+        echo "UNSAFE_CTX_ENV=${{ github.repository }}:${{ github.sha }}" >> "$GITHUB_ENV"
+
+    - id: arg_to_output
+      shell: bash
+      run: |
+        {
+          echo "arg_output<<EOF"
+          echo "${{ inputs.user_text }}"
+          echo "EOF"
+        } >> "$GITHUB_OUTPUT"
+
+    - id: ctx_to_output
+      shell: bash
+      run: |
+        echo "ctx_output=${{ github.actor }}@${{ github.ref }}" >> "$GITHUB_OUTPUT"
