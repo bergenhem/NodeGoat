@@ -9,9 +9,9 @@ jobs:
       issues: write
       contents: read
       pull-requests: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       
       - name: Run Socket Basics
         uses: SocketDev/socket-basics@933940968bf73a35a63d5594e78a27d0b2a8c2d3
