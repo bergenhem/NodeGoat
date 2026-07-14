@@ -1,0 +1,35 @@
+{
+  "patches": {
+    "pkg:npm/fsevents@1.2.9": {
+      "uuid": "36b2a4ce-5362-4be4-8d83-5e0597c6d188",
+      "exportedAt": "Sun, 29 Mar 2026 19:29:22 GMT",
+      "files": {
+        "package/binding.gyp": {
+          "beforeHash": "265cb4d7a9f5d048303f9bbd705891049f9477cdf7a06891402cdee39556d5de",
+          "afterHash": "99966d2c93367e037606f7c723cc9ce992cdb95113e4e598f353c219bae75202"
+        },
+        "package/fsevents.js": {
+          "beforeHash": "6cb221af2c976090df730c9da86f370365c2cf107586f825b20ad9a3396e0767",
+          "afterHash": "af0444d2ac4b3bfca2e8a8ab685748074820518e5c705dc5fa5f2db2d2f88c46"
+        },
+        "package/install.js": {
+          "beforeHash": "0cf4f0f6330fb2ae3b8c4d01754fb92e5ce1c76cb556ca570aa06d410f757817",
+          "afterHash": "c54ddd6920289f05462fd8815beebd183b4e239c3a8051c960c823e1fd457b55"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-8r6j-v8pm-fqw3": {
+          "cves": [
+            "CVE-2023-45311"
+          ],
+          "summary": "Code injection in fsevents",
+          "severity": "CRITICAL",
+          "description": "fsevents before 1.2.11 depends on the https://fsevents-binaries.s3-us-west-2.amazonaws.com URL, which might allow an adversary to execute arbitrary code if any JavaScript project (that depends on fsevents) distributes code that was obtained from that URL at a time when it was controlled by an adversary."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    }
+  }
+}

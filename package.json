@@ -36,7 +36,9 @@
     "docker-mongo": "docker run -p 27017:27017 --name mongo  mongo:latest",
     "start-infra": "docker-compose up",
     "stop-infra": "docker-compose down",
-    "cy:verify": "cypress verify"
+    "cy:verify": "cypress verify",
+    "postinstall": "npx @socketsecurity/socket-patch apply --silent --ecosystems npm",
+    "dependencies": "npx @socketsecurity/socket-patch apply --silent --ecosystems npm"
   },
   "devDependencies": {
     "async": "^2.0.0-rc.4",
@@ -58,7 +60,7 @@
     "nodemon": "^1.19.1",
     "selenium-webdriver": "^2.53.2",
     "should": "^8.3.1",
-    "dns-sync":"0.1.0"
+    "dns-sync": "0.1.0"
   },
   "repository": "https://github.com/OWASP/NodejsGoat",
   "license": "Apache 2.0"
